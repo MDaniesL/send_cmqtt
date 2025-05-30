@@ -3,9 +3,7 @@ import time
 import streamlit as st
 import json
 import platform
-
-# Muestra la versión de Python junto con detalles adicionales
-st.write("Versión de Python:", platform.python_version())
+from PIL import Image
 
 values = 0.0
 act1="OFF"
@@ -25,14 +23,19 @@ def on_message(client, userdata, message):
 
 broker="157.230.214.127"
 port=1883
-client1= paho.Client("GIT-HUB")
+client1= paho.Client("CLIENT555")
 client1.on_message = on_message
 
 
 
-st.title("MQTT Control")
+st.title("Control de Rueda")
 
-if st.button('ON'):
+st.subheader("El mapache ladrón quiere abrir la caja fuerte, pero necesita tu ayuda para decifrar la combinación correcta. Experimenta rotando a diferentes ángulos para darle ideas.")
+
+image = Image.open('Sly.jpg')
+st.image(image, width=350)
+
+if st.button('Set a 100.00'):
     act1="ON"
     client1= paho.Client("CLIENT555")                           
     client1.on_publish = on_publish                          
@@ -46,7 +49,7 @@ if st.button('ON'):
 else:
     st.write('')
 
-if st.button('OFF'):
+if st.button('Set a 0.00'):
     act1="OFF"
     client1= paho.Client("CLIENT555")                           
     client1.on_publish = on_publish                          
@@ -58,7 +61,7 @@ if st.button('OFF'):
 else:
     st.write('')
 
-values = st.slider('Selecciona el rango de valores',0.0, 100.0)
+values = st.slider('Mueve a un ángulo específico',0.0, 100.0)
 st.write('Values:', values)
 
 if st.button('Enviar valor analógico'):
