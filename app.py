@@ -32,7 +32,7 @@ st.title("Control de Rueda")
 
 st.subheader("El mapache ladrón quiere abrir la caja fuerte, pero necesita tu ayuda para decifrar la combinación correcta. Experimenta rotando a diferentes ángulos para darle ideas.")
 
-image = Image.open('Sly.jpg')
+image = Image.open('Sly.png')
 st.image(image, width=350)
 
 if st.button('Set a 100.00'):
